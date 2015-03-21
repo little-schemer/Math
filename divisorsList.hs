@@ -6,7 +6,7 @@
 -------------------------------------------------------------
 
 import qualified Data.Vector.Mutable as VM
-import qualified Data.Vector as V
+import qualified Data.Vector         as V
 import Control.Monad.ST
 
 
