@@ -75,8 +75,33 @@ factorize n maxN = loop n [] (2 : 3 : concat [[6 * x - 1, 6 * x + 1] | x <- [1 .
 --
 -- * M(n) = 2^n - 1 が素数かどうかの判定。3 以上の奇数 n について有効。
 --
-isMersennePrime :: Int -> (Integer, Bool)
+isMersennePrime :: Integral a => a -> (a, Bool)
 isMersennePrime n = (m, if (foldr f 4 [3 .. n]) == 0 then True else False)
   where
     m = 2^n - 1                 -- メルセンヌ数
     f s _ = rem (s * s - 2) m
+
+
+
+--
+-- 3. フェルマー、オイラー、擬素数
+--
+
+--
+-- アルゴリズム 3.3 ::
+--
+-- * b >= 0 について mod (a^b) m を計算する
+--
+powerMod :: (Integral a, Integral t) => t -> a -> t -> t
+powerMod a b m = loop a b 1
+  where
+    loop a 0 n = n
+    loop a b n = loop (mod (a * a) m) (div b 2) n'
+      where n' = if odd b then mod (n * a) m else n
+
+
+--
+-- 見込み素数 (probable prime) の判定
+--
+isProbablePrime :: Integral a => a -> Bool
+isProbablePrime n = and [powerMod p (n - 1) n == 1 | p <- [2, 3, 5, 7]]
