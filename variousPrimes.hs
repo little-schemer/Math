@@ -4,9 +4,10 @@
 --
 -----------------------------------------
 
-
 import MyModule.Primes
 import MyModule.Utility
+
+
 
 -----------------------------------------
 -- メルセンヌ数
@@ -115,6 +116,7 @@ palindromicPrimes = filter isPalindromicPrime' primes
 --
 -- 補助関数
 --
+isPalindromicPrime' :: Integral a => a -> Bool
 isPalindromicPrime' n = n == n' && isPrime n'
   where n' = reverseInt n
 
@@ -165,6 +167,3 @@ merge [] ys = ys
 merge xs@(x : xs') ys@(y : ys')
   | x <= y = x : merge xs' ys
   | otherwise = y : merge xs ys'
-
-
-main = print $ take 10 $ primeKTuples [6]
