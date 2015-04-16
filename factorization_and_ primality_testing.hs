@@ -12,7 +12,7 @@ import Data.List
 -- * 一方あるいは両方が負であっても、 a の最後の値の絶対値が最大公約数。
 -- * 一方あるいは両方が 0 の場合は 0 を返す。
 --
-gcd' :: Int -> Int -> Int
+gcd' :: Integer -> Integer -> Integer
 gcd' a 0 = abs a
 gcd' a b = gcd' b (rem a b)
 
@@ -26,7 +26,7 @@ gcd' a b = gcd' b (rem a b)
 -- * gcd'' a b   =>  (m, n, gcd)
 -- * b < 0 の場合、答がおかしくなる。
 --
-gcd'' :: Int -> Int -> (Int, Int, Int)
+gcd'' :: Integer -> Integer -> (Integer, Integer, Integer)
 gcd'' a b = loop (1, 0) (0, 1) (a, b)
   where
     loop (u1, _) (u2, _) (u3, 0)    = (u1, u2, u3)
@@ -105,3 +105,22 @@ powerMod a b m = loop a b 1
 --
 isProbablePrime :: Integral a => a -> Bool
 isProbablePrime n = and [powerMod p (n - 1) n == 1 | p <- [2, 3, 5, 7]]
+
+
+--
+-- 練習問題 3.11
+--
+binaryExpansion :: Integer -> [Integer]
+binaryExpansion n
+  | n < 2     = [n]
+  | otherwise = (rem n 2) : binaryExpansion (div n 2)
+
+
+--
+-- 練習問題 3.12
+--
+farmer'sMultiplication :: Integer -> Integer -> Integer
+farmer'sMultiplication a b = loop a b 0
+  where
+    loop _ 0 n = n
+    loop a b n = loop (a + a) (div b 2) (if odd b then n + a else n)
