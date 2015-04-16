@@ -5,13 +5,8 @@
 --
 -------------------------------------------------------------
 
-<<<<<<< HEAD
-import qualified Data.Vector.Mutable  as VM
-import qualified Data.Vector          as V
-=======
 import qualified Data.Vector.Mutable as VM
 import qualified Data.Vector         as V
->>>>>>> e81102a3fde1f3b26404071c77ced949778c4004
 import Control.Monad.ST
 
 
