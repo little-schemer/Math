@@ -124,3 +124,12 @@ farmer'sMultiplication a b = loop a b 0
   where
     loop _ 0 n = n
     loop a b n = loop (a + a) (div b 2) (if odd b then n + a else n)
+
+
+--
+-- 練習問題 3.16
+--
+-- オイラーのφ関数 (素因数分解を使用しないもの)
+--
+phiFunction :: Integral a => a -> Int
+phiFunction n = length [i | i <- [1 .. n], gcd i n == 1]
