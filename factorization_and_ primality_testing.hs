@@ -139,8 +139,23 @@ phiFunction n = length [i | i <- [1 .. n], gcd i n == 1]
 -- 4. RSA 公開鍵暗号系
 --
 
+
+
+
 --
--- アルゴリズム 4.5
+-- 5. フェルマから今日までの素因数分解技法
 --
--- * 中国剰余定理
+
 --
+-- アルゴリズム 5.1
+--
+-- * n の平方根に近い因数を求めるフェルマのアルゴリズム
+--
+fermat :: Integral a => a -> (a, a)
+fermat n = loop (2 * isqrt + 1) 1 (isqrt * isqrt - n)
+  where
+    isqrt = ceiling $ sqrt $ fromIntegral n
+    loop u v r
+      | r == 0 = (div (u + v - 2) 2, div (u - v) 2)
+      | r < 0  = loop (u + 2) v (r + u)
+      | r > 0  = loop u (v + 2) (r - v)
