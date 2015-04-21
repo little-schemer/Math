@@ -133,3 +133,14 @@ farmer'sMultiplication a b = loop a b 0
 --
 phiFunction :: Integral a => a -> Int
 phiFunction n = length [i | i <- [1 .. n], gcd i n == 1]
+
+
+--
+-- 4. RSA 公開鍵暗号系
+--
+
+--
+-- アルゴリズム 4.5
+--
+-- * 中国剰余定理
+--
