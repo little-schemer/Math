@@ -2,6 +2,7 @@
 #+AUTHOR: Little Schemer
 
 * 数学関連のコード
-  - divisorsList.hs :: 約数のリストのリスト Data.Vector 版
+  - divisorsList.hs :: 約数のリスト Data.Vector 版
+  - factorizeList.hs :: 素因数分解のリスト Data.Vector 版
   - factorization_and_primality_testing.hs :: 『素因数分解と素数判定』のアルゴリズムなど
   - variousPrimes.hs :: いろいろな素数
