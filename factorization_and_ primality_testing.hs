@@ -176,7 +176,7 @@ fermat n = loop (2 * isqrt + 1) 1 (isqrt * isqrt - n)
 --
 -- * ポラードの p - 1 素因数分解アルゴリズム
 --   n : 素因数分解すべき数
---   c : c < m
+--   c : 冪乗の底 (c < n, gcd n c == 1)
 --
 pMinus1 :: Integral a => a -> a -> a -> a
 pMinus1 n c limit = head $ filter (> 1) $ loop nums
