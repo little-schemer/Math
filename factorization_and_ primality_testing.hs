@@ -169,3 +169,18 @@ fermat n = loop (2 * isqrt + 1) 1 (isqrt * isqrt - n)
       | r == 0 = (div (u + v - 2) 2, div (u - v) 2)
       | r < 0  = loop (u + 2) v (r + u)
       | r > 0  = loop u (v + 2) (r - v)
+
+
+--
+-- アルゴリズム 5.3
+--
+-- * ポラードの p - 1 素因数分解アルゴリズム
+--   n : 素因数分解すべき数
+--   c : c < m
+--
+pMinus1 :: Integral a => a -> a -> a -> a
+pMinus1 n c limit = head $ filter (> 1) $ loop nums
+  where
+    nums = scanl (\ x y -> powerMod x y n) c [2 .. limit]
+    loop [] = []
+    loop xs = (gcd (a - 1) n) : loop as where (a : as) = drop 9 xs
