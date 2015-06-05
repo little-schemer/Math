@@ -11,15 +11,14 @@ import qualified Data.Vector         as V
 import qualified Data.Vector.Mutable as M
 import Control.Monad.ST
 import Control.Monad
-import MyModule.Primes
 
 
 -------------------------------------------------------------
 -- 1 〜 n までの素因数分解のリスト
 -- ex : factorizeList 5  =>  [[],[],[2],[3],[2,2],[5]]
 -------------------------------------------------------------
-factorizeList :: Int -> [[Int]]
-factorizeList n = tail $ map reverse $  V.toList $ sieve
+factorsList :: Int -> [[Int]]
+factorsList n = tail $ map reverse $  V.toList $ sieve
   where
     sieve = runST $ do
       vec <- M.replicate (n + 1) []
