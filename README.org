@@ -2,5 +2,4 @@
 #+AUTHOR: Little Schemer
 
 * 数学関連のコード
-  - factorization_and_primality_testing.hs :: 『素因数分解と素数判定』のアルゴリズムなど
   - variousPrimes.hs :: いろいろな素数
